@@ -14,30 +14,47 @@ gmlwriter::gmlwriter()
 {
 
 }
-int gmlwriter:: write_friends(char * fname, Mylist<User*> users)
+gmlwriter::~gmlwriter(){
+
+}
+
+int gmlwriter:: write_friends(char * fname, Mylist<User*> users, vector<string> edges, vector<string> nodes)
 {
 	int x = users.size();
+	int y = edges.size();
 	ofstream ofile(fname);
 	if (ofile.is_open()){
 	ofile << "graph [" << endl;
+	ofile << "  This is the output file" << endl;
 	ofile << "  directed 1" << endl;
 	for (int i =0; i< x; i++){
-		cout << "  " << "node  [" << endl;
+		ofile << "  " << "node [" << endl;
 		int id = users.at(i)->getId();
-		ofile << '\t' << "id   " << id << endl;
+		ofile << "  " << " id  " << id << endl;
 		string name = users.at(i)->getName();
-		ofile << '\t' << "name   " << name << endl;
+		ofile << "  " << " name  " << name << endl;
 		int age= users.at(i)->getAge();
-		ofile << '\t' <<"age   " <<  age << endl;
+		ofile << "  " << " age  " <<  age << endl;
 		int zip = users.at(i)->getZip();
-		ofile << '\t' << "zip   " << zip << endl;
-		}
+		ofile << "  " << " zip  " << zip << endl;
+		ofile << "  ]" << endl;
 	}
-	/*for (int i=0; i< ; i++){
-		cout << "edge  [" << endl;
-		cout << '\t' << "source  " __ << endl;
-		cout << '\t' << "target  " __ << endl;
-	}*/
+	int source, friends;
+	string name1, name2;
+	for (int i=0; i< x; i++){
+		ofile << "  edge [" << endl;
+		stringstream yy(edges[i]);
+		stringstream xx(edges[i]);
+		xx >> name1;
+		xx >> source;
+		xx >> name2;
+		xx >> friends;
+		ofile << "     " <<  name1 << source << endl;
+		ofile << "     " <<  name2 << friends << endl;
+		ofile << "   ]" << endl;
+		}
+	ofile << "]" << endl;
+	}
 	return 0;
 }
 //#endif

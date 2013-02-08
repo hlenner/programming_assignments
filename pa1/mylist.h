@@ -38,7 +38,7 @@ Mylist<T>::Mylist()
 template <typename T>
 Mylist<T>:: ~Mylist()
 {
-	delete [] items;
+	//delete [] items;
 }
 template <typename T>
 void Mylist<T>:: push_back(T x)
@@ -54,7 +54,7 @@ void Mylist<T>:: push_back(T x)
 			}
 			moreitems[_size] = x;
 			_size++;
-			delete []items;
+			
 	}
 }
 template <typename T>

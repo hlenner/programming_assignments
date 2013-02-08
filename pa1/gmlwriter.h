@@ -9,7 +9,7 @@ class gmlwriter{
 public:
 	gmlwriter();
 	~gmlwriter();
-	int write_friends(char *fname, Mylist<User*> users);
+	int write_friends(char *fname, Mylist<User*> users, vector<string> edges, vector<string> nodes);
 private:
 
 };
