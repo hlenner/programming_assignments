@@ -63,6 +63,10 @@ void User:: makeFriend(int x)
 {
 	friends.push_back(x);
 }
+void User:: removeFriend(int x)
+{
+	friends.remove(x);
+}
 int User:: getId()
 {
 	return _id;

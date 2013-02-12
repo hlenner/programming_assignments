@@ -17,6 +17,7 @@ public:
 	int getAge();
 	string getName();
 	void makeFriend(int x);
+	void removeFriend(int x);
 	int getZip();
 	void setZip(int zip);
 	void getFriends();

@@ -5,6 +5,7 @@
 #include "mylist.h"
 #include "user.h"
 #include "gmlwriter.h"
+#include <sstream>
 
 using namespace std;
 
@@ -18,9 +19,8 @@ if(argc < 4){
 	vector<string> edges;
 	string gml, command, output;
 	Mylist<User*> users;
-	
+
 	GMLReader::read(argv[1], nodes, edges);
-	
 	string name, first, last;
 	int id, age, zip;
 	string random;
@@ -45,6 +45,72 @@ if(argc < 4){
 		User* auser= new User(id, name, age, zip);
 		users.push_back(auser);
 	}
+	
+	ifstream myfile(argv[2]);
+	//int linecount;
+	string lines;
+	string aor;
+	string first1, last1, first2, last2, friend1, friend2;
+	for (int i=0; i<3; i++){//CANNOT HARDCODE 3, FIGURE OUT HOW TO FIX THIS
+	string value1, value2;
+		myfile >> aor;
+		
+		myfile >> first1 >> last1;
+		myfile >>first2>> last2;
+		friend1= first1 + " " + last1;
+		friend2= first2 + " " + last2;
+		
+		if (aor == "a"){
+			for (int i=0; i<users.size(); i++){
+				if (users.at(i)->getName()==friend1){
+					stringstream cc;
+					cc << i;
+					value1=cc.str();
+						for (int x=0; x<users.size(); x++){
+							if (users.at(x)->getName()==friend2){
+								users.at(i)->makeFriend(x);
+								users.at(x)->makeFriend(i);	
+								stringstream tt;
+								tt << x;
+								value2=tt.str();
+								string str("source "+ value1 + " target " + value2);
+								string str2("target "+value2 + " source " + value1);
+								//cout << str << endl;
+								//cout << str2 << endl;
+								edges.push_back(str);
+								edges.push_back(str2);
+							}
+					}
+				}
+			}
+		}
+		
+		if (aor == "r"){
+			for (int i=0; i<users.size(); i++){
+				if (users.at(i)->getName()==friend1){
+					stringstream cc;
+					cc << i;
+					value1=cc.str();
+						for (int x=0; x<users.size(); x++){
+							if (users.at(x)->getName()==friend2){
+								users.at(i)->removeFriend(x);
+								users.at(x)->removeFriend(i);
+								stringstream tt;
+								tt << x;
+								value2=tt.str();
+								string str("source "+ value1 + " target " + value2);
+								string str2("target "+value2 + " source " + value1);
+								//cout << str << endl;
+								//cout << str2 << endl;
+								//edges.erase(str);
+								//edges.erase(str2);
+							}
+					}
+				}
+			}
+		}
+		}
+		
 	int source, friends;
 	string definition;
 	for (int i=0; i<edges.size();i++)
@@ -56,6 +122,9 @@ if(argc < 4){
 		xx >> friends;
 		users.at(source)->makeFriend(friends);
 		users.at(friends)->makeFriend(source);
+	}
+	for (int i=0; i<edges.size(); i++){
+		cout << edges[i] << endl;
 	}
 	gmlwriter g;
 	g.write_friends(argv[3], users, edges, nodes);

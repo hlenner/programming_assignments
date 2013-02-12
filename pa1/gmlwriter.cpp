@@ -41,9 +41,8 @@ int gmlwriter:: write_friends(char * fname, Mylist<User*> users, vector<string> 
 	}
 	int source, friends;
 	string name1, name2;
-	for (int i=0; i< x; i++){
+	for (int i=0; i< y; i++){
 		ofile << "  edge [" << endl;
-		stringstream yy(edges[i]);
 		stringstream xx(edges[i]);
 		xx >> name1;
 		xx >> source;
