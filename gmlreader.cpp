@@ -22,8 +22,10 @@ int read_gml(const char*, vector<string>&, vector<string>&);
 
 // }
 
+
 bool GMLReader::read(const char *fn, vector<std::string>& nodes, vector<std::string>& edges)
 {
+ 
   if(read_gml(fn, nodes, edges)){
     return false;
   }
