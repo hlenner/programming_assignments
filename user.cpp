@@ -8,7 +8,6 @@
 #include "user.h"
 
 
-
 using namespace std; 
 
 User::User()
@@ -68,7 +67,6 @@ void User:: setZip(int zip)//mutator to set the zip
 }
 void User:: makeFriend(int x)//adds id to friend mylist
 {
-
 	friends.push_back(x);
 }
 void User:: removeFriend(int x)//remove the friend, calls to mylist remove

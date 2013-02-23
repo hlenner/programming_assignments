@@ -26,7 +26,7 @@ public:
 	int getFriendsSize();
 	Mylist<int> getFriends();
 
-private:
+protected:
 	string _name;
 	int _age;
 	int _zip;

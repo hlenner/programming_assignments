@@ -14,13 +14,14 @@ gmlwriter::gmlwriter()
 {
 
 }
-gmlwriter::~gmlwriter(){
+gmlwriter::~gmlwriter()
+{
 
 }
 
-int gmlwriter:: write_friends(char * fname, Mylist<User*> users)
+int gmlwriter:: write_friends(char * fname, Mylist<BCUser*> userList)
 {
-	int x = users.size();
+	int x = userList.size();
 	
 	ofstream ofile(fname);//takes input file
 	if (ofile.is_open()){//tests if it is open
@@ -29,21 +30,21 @@ int gmlwriter:: write_friends(char * fname, Mylist<User*> users)
 	ofile << "  directed 1" << endl;
 	for (int i = 0; i< x; i++){
 		ofile << "  " << "node [" << endl;
-		int id = users.at(i)->getId();//prints user id at i
+		int id = userList.at(i)->getId();//prints user id at i
 		ofile << "  " << " id  " << id << endl;
-		string name = users.at(i)->getName();//prints user name at i
+		string name = userList.at(i)->getName();//prints user name at i
 		ofile << "  " << " name  " << name << endl;
-		int age= users.at(i)->getAge();//prints user age at i
+		int age= userList.at(i)->getAge();//prints user age at i
 		ofile << "  " << " age  " <<  age << endl;
-		int zip = users.at(i)->getZip();//prints user zip at i
+		int zip = userList.at(i)->getZip();//prints user zip at i
 		ofile << "  " << " zip  " << zip << endl;
 		ofile << "  ]" << endl;
 	}
 	for (int i=0; i< x; i++){
-		for (int j=0; j<users.at(i)->getFriendsSize(); j++){
+		for (int j=0; j<userList.at(i)->getFriendsSize(); j++){
 			ofile << "  edge [" << endl;//formatting
-			ofile << "   " << "source " << users.at(i)->getId() <<endl;//gets the id of the user
-			ofile <<  "   target " << users.at(i)->getFriendAt(j) << endl;//gets the individual friends of that user
+			ofile << "   " << "source " << userList.at(i)->getId() <<endl;//gets the id of the user
+			ofile <<  "   target " << userList.at(i)->getFriendAt(j) << endl;//gets the individual friends of that user
 			ofile << "   ]" << endl;			
 			}
 		}
