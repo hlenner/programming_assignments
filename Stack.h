@@ -26,7 +26,7 @@ Stack<T>:: Stack()
 template<typename T>
 Stack<T>:: ~Stack() 
 {
-
+	LList<T>::clear();
 }
 template<typename T>
 void Stack<T>:: push(const T &val)
@@ -46,7 +46,7 @@ void Stack<T>:: pop()
 template<typename T>
 T& Stack<T>:: top() 
 {
-	return LList<T>:: peek_front();
+	return LList<T>:: peek_back();
 }
 
 template<typename T>

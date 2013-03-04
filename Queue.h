@@ -26,7 +26,7 @@ LList<T>();
 template<typename T>
 Queue<T>:: ~Queue() 
 {
-
+	LList<T>::clear();
 }
 template<typename T>
 void Queue<T>:: push_back(const T &val)

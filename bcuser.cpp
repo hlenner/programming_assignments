@@ -1,7 +1,8 @@
-#ifndef QUEUE_H
+#ifndef bcuser_h
 #define QUEUE_H
 #include "bcuser.h"
 #include "user.h"
+#include "mylist.h"
 
 using namespace std;
 
@@ -23,10 +24,11 @@ BCUser::BCUser(int id, std::string name, int age, int zip): User(id, name, age, 
 }
 BCUser::~BCUser()
 {
-;
+
 }
-/*Mylist<double> *BCUser:: computeBC(MyList<BCUser*> &userList)
+void BCUser:: clearPred()
 {
-;
-}*/
+	preds.clearList();
+}
+
 #endif

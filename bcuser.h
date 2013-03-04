@@ -17,7 +17,7 @@ public:
 	Mylist<int> preds; //List of predecessors
 	double delta; //partial BC score
 	double bc; //total BC score
-	//Mylist<double>* computeBC(MyList<BCUser*> &userList);
+	void clearPred();
 private:
 
 	};
