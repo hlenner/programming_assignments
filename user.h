@@ -25,6 +25,7 @@ public:
 	int getId();
 	int getFriendsSize();
 	Mylist<int> getFriends();
+	void clearList();
 
 protected:
 	string _name;

@@ -89,4 +89,5 @@ Mylist<int> User:: getFriends()//accesor to return friends mylist item
 {
 	return friends;
 }
+
 #endif
