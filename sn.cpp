@@ -13,7 +13,7 @@ using namespace std;
 
 int main(int argc, char *argv[])
 {
-User x;
+/*User x;
 gmlwriter g;
 
 if(argc < 4){
@@ -127,7 +127,7 @@ if(argc < 4){
 	//this skips the line if it does not start with an "a" or an "r"
 		}
 	}
-	g.write_friends(argv[3], users);//writes friends to a new file
+	g.write_friends(argv[3], users);//writes friends to a new file*/
   return 0;
 }
 	

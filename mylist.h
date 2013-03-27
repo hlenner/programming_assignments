@@ -8,7 +8,7 @@
 #include <vector>
 
 //template class for mylist
-const int DEFAULT_LIST_SIZE=1000;
+const int DEFAULT_LIST_SIZE=10;
 
 using namespace std;
 
@@ -20,12 +20,12 @@ public:
 	~Mylist();
 	void push_back(T x);
 	int size() const;
-	T at(int loc) const;
+	T& at(int loc) const;
 	bool remove(T val);
 	void print();
 	void clearList();
 	T& operator[](int lhs);
-	void clear();
+	//void clear();
 private:
 	T *items;	
 	int _size;
@@ -42,8 +42,8 @@ Mylist<T>::Mylist()
 template <typename T>
 Mylist<T>:: ~Mylist()
 {
-	clear();
-
+	//clear();
+	delete []items;
 }
 template <typename T>
 void Mylist<T>:: push_back(T x)//this function tests the size of the list and makes sure its big enough before adding the item to the end of it
@@ -52,10 +52,11 @@ void Mylist<T>:: push_back(T x)//this function tests the size of the list and ma
 		capacity=capacity*2;
 		T* moreitems= new T[capacity];
 		for (int i = 0; i<_size; i++){
-			moreitems[i]=items[i];
+				moreitems[i]=items[i];
 			}
 			moreitems[_size++] = x;
 			delete [] items;
+			items=moreitems;
 		}
 	else{
 		items[_size++] = x;	
@@ -67,7 +68,7 @@ int Mylist<T>:: size() const//accessor function
 	return _size;
 }
 template <typename T>
-T Mylist<T>:: at(int loc) const//returns the item at the location given in parameters 
+T& Mylist<T>:: at(int loc) const//returns the item at the location given in parameters 
 {
 	return items[loc];
 }
@@ -100,15 +101,15 @@ void Mylist<T>::clearList()
 {
 	_size=0;
 }
-template <typename T>
+/*template <typename T>
 void Mylist<T>:: clear()
 {
-/*while(items->next!=NULL){
+while(items->next!=NULL){
     Item<T> *temp = head_->next;
     delete head_;
     head_ = temp;
-  }*/
-}
+  }
+}*/
 template <typename T>
 T& Mylist<T>::operator[](int lhs)
 {
