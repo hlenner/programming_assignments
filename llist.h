@@ -16,7 +16,7 @@ class LList {
   ~LList();
   bool empty() const;
   int size() const;
-  void push_back(const T& new_val);
+  void push_back(T new_val);
   void pop_front();
   T& peek_front() const;
   T& peek_back() const;
@@ -43,7 +43,6 @@ LList<T>::LList()
 template <typename T>
 LList<T>::~LList()
 {
-  cout <<"deleting list" << endl;
   clear();
 }
 
@@ -92,11 +91,12 @@ Item<T>* LList<T>::getNodeAt(int loc) const
 }
 
 template <typename T>
-void LList<T>::push_back(const T& new_val)
+void LList<T>::push_back(T new_val)
 {
 Item<T> *newptr = new Item<T>;
 newptr->val =new_val;
 newptr->next=NULL;
+
 
 if (head_ == NULL){//if the list is empty, make head = newptr
 	head_ = newptr;
@@ -115,21 +115,19 @@ template <typename T>
 void LList<T>::pop_front()
 {
 if (head_!=NULL){
-	Item<T> *temp = new Item<T>;
-	temp = head_->next;
-	head_ = head_->next;
-	delete temp;
+	head_=head_->next;
 	}
 }
+
 template <typename T>
 T& LList<T>::peek_front() const
 {
 if (head_!=NULL){
-	return head_->val;
+return head_->val;
 }
 else{
-	throw std:: invalid_argument("bad location");
-	}
+throw std:: invalid_argument("bad location");
+}
 }
 template <typename T>
 void LList<T>::pop_back()
@@ -142,12 +140,12 @@ void LList<T>::pop_back()
  }
  template <typename T>
 T& LList<T>::peek_back() const
-{
-	Item<T> *temp=head_;
-	while(temp->next!=NULL){
-		temp=temp->next;
-	}
-	return (temp->val);
+ {
+ 	Item<T> *temp = head_;
+ 	while(temp->next != NULL){
+ 		temp=temp->next;
+ 	}
+ 	return (temp->val);
  }
 template <typename T>
 bool LList<T>::remove(const T& val)
@@ -221,4 +219,5 @@ else if (loc==0){
 	newNode->next=nodePtr;
   }
   */
+
 #endif

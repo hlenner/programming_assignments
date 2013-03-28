@@ -78,8 +78,8 @@ if(argc < 3){
 		}
 	}
 	//performs the BC algorithm
-	Mylist<double>* score= 	y->computeBC(userList);
-
+	y->computeBC(userList);
+	
 	//prints the user id and bc score to a new file
 	int z = userList.size(); //stores the size of the userlist
 	ofstream ofile(argv[2]);//takes input file
@@ -91,8 +91,6 @@ if(argc < 3){
 			ofile<< "bc: " << userList.at(i)->bc << endl;//prints normalized bc score of the user
 		}	
 	}
-	
-	delete score;
 	delete y;
   return 0;
 }

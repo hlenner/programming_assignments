@@ -11,7 +11,6 @@ public:
 	gmlwriter();
 	~gmlwriter();
 	int write_friends(char *fname, Mylist<BCUser*> userList);
-	int print_bc(char * fname, Mylist<BCUser*> userList);
 private:
 
 };
