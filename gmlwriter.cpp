@@ -7,6 +7,8 @@
 #include "gmlwriter.h"
 #include "user.h"
 #include "mylist.h"
+#include "bcuser.h"
+#include "BCAlg.h"
 
 using namespace std;
 
@@ -51,4 +53,16 @@ int gmlwriter:: write_friends(char * fname, Mylist<BCUser*> userList)
 	}
 return 0;
 }
+/*int gmlwriter:: print_bc(char * fname, Mylist<BCUser*> userList){
+	int x = userList.size();
+	ofstream ofile(fname);//takes input file
+	if (ofile.is_open()){//tests if it is open
+		for (int i=0; i<x; i++){
+			int id= userList.at(i)->getID();
+			cout << "id:  " << id << endl;
+			cout<< "bc: " << userList.at(i)->bc << endl;
+		}
+	}
+	return 0;
+}*/
 //#endif
